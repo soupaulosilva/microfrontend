@@ -1,0 +1,21 @@
+{
+  "name": "container",
+  "private": true,
+  "workspaces": [
+    "../home",
+    "../components"
+  ],
+  "version": "0.0.0",
+  "scripts": {
+    "start": "concurrently \"npm --prefix ../home run dev\"  \"npm --prefix ../components run dev\"",
+    "build": "concurrently \"npm --prefix checkout run build\" \"npm --prefix home run build\" \"npm --prefix shop run build\"",
+    "serve": "concurrently \"npm --prefix checkout run start\" \"npm --prefix home run start\" \"npm --prefix shop run start\"",
+    "kill-process": "kill-port 3001 3000"
+  },
+  "dependencies": {
+    "@module-federation/nextjs-mf": "^7.0.8",
+    "concurrently": "7.6.0",
+    "kill-port": "^2.0.1",
+    "webpack": "^5.88.2"
+  }
+}
